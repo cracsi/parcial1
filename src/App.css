@@ -13,16 +13,7 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+
 
 .App-link {
   color: #61dafb;
@@ -35,4 +26,131 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.bannerTitle {
+  font-size: 36px;
+  font-family: "Jaldi", sans-serif;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  display:flex;
+  align-items: left;
+  margin-left: 200px;
+}
+
+.outlined-image {
+  outline: 2px solid red; /* Change color and thickness as needed */
+}
+
+.formUsuario{
+  margin-left: 0px;
+  margin-bottom: 0px !important;
+}
+
+.formButtons{
+  margin-top: 25px;
+}
+
+.formLabel{
+  margin-left: -400px;
+ 
+}
+.formLabel1{
+  margin-left: -320px;
+ 
+}
+
+.botonIngresar{
+  background-color: rgb(0, 59, 147); /* Blue background color */
+    color: white; /* White text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Show pointer cursor on hover */
+    border-radius: 0;
+    margin-right: 100px;
+}
+
+.botonCancelar{
+  background-color: rgb(214, 64, 64); /* Blue background color */
+    color: rgb(0, 0, 0); /* White text color */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border: none; /* Remove default button border */
+    border-radius: 5px; /* Add border radius for rounded corners */
+    cursor: pointer; /* Show pointer cursor on hover */
+    border-radius: 0;
+    margin-left: 100px;
+}
+
+.inp{
+  
+  background-color: rgb(198, 197, 197); /* Blue background color */
+  outline: none;
+  border: 0; /* Remove border */
+    margin: 0; /* Remove margin */
+    transform: scaleX(2);
+}
+
+.txtError{
+  color: rgb(214, 64, 64); /* Blue background color */
+}
+
+.contenedorTabla {
+ 
+  width: 48%;
+  margin-bottom: 123px;
+  margin-left: 200px;
+}
+
+
+.tabla{
+  width: 786px ;
+  margin-right: 31px;
+  margin-left: 13px;
+  margin-top: 25px;
+  margin-bottom: 0px ;
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.tablaHead{
+  background-color: rgb(51, 58, 64);
+  color: rgb(255, 255, 255);
+ 
+  border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.conetenedorPrincipalLista{
+  overflow: auto; /* Clearfix */
+  display: flex;
+  margin-top: 100;
+  padding-top: 50px;
+}
+
+.contenedorDetalle{
+  border: 1px solid black; /* Add border to items */
+    padding: 10px;
+    margin-right: 10px;
+  background-color: rgb(208, 208, 208);
+ margin-bottom: 300px;
+ margin-left: 125px;
+ margin-right: 125px;
+ width: 20%;
+
+}
+
+.cont{
+  flex: 1;
+}
+
+.texto{
+  text-align: left;
+}
+
+.card-text{
+  text-align: left;
+}
+
+.contacto{
+  text-align: center;
 }

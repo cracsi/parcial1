@@ -1,5 +1,7 @@
 import Vehiculos from './components/vehiculos'
 import Formulario from './formulario';
+import banner from './image 1 1.png';
+import { Image } from 'react-bootstrap'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -9,7 +11,10 @@ function App() {
   return (
     
     <div className="App">
-    <h1>Aqui va ek banner</h1>
+    <div className="App-header">
+    <h1 className="bannerTitle">TuSegundazo.com</h1>
+    <Image className="banner" src={banner} alt="banner"/>
+    </div>
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Formulario />} />

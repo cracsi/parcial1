@@ -3,23 +3,21 @@ import { useState } from 'react';
 import { useNavigate,useParams} from "react-router-dom";
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { FormattedMessage } from 'react-intl';
 
 
 
 
 function Formulario() {
 
-    const [formValues, setFormValues] = useState({email:"", password:"", favClass:"1"})
+    const [formValues, setFormValues] = useState({email:"", password:""})
     const [validationStates, setValidationStates] = useState({email:"", password:""})
     const navigate=useNavigate();
 
-    const clickSubmit = (() => {
-        //Call fetch
-        alert(JSON.stringify(formValues))
-      })
+    
 
 
-    const handleEmailChange = ((e) => {
+    const handleUserChange = ((e) => {
         setFormValues({...formValues, email: e.target.value})
       });
      
@@ -29,35 +27,90 @@ function Formulario() {
      
       function handleClickIngresar()
       {
-        navigate("/vehiculos")
+        fetch("http://localhost:3001/login", {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({"login": formValues.email, "password": formValues.password})
+          }).then(response => response.json())
+            .then(data => {
+              validacion(data);
+            })
+        
       }
 
+function validacion(valores)
+{
+  const usuario=valores.email
+  const contra=valores.password
+  
+  if (!(valores.status=="error"))
+  {
+    setValidationStates({email:"true",password:"true"})
+    navigate("/vehiculos");
+  }
+  else
+  {
+    setValidationStates({email:"false",password:"false"})
+  }
+ 
+}
+
+function error()
+{
+  
+  if (validationStates.email==="false" || validationStates.password==="false")
+  {
+    
+    
+
+    return (    <h className="txtError"><FormattedMessage id='Error'/></h>
+    )
+  }
+}
 
 return (
     <div>
 
-     <h2>Inicio de Sesión</h2>
+     <h2><FormattedMessage id='Inicio de Sesión'/></h2>
     
      <Form>
-     <Form.Group className="mb-6" controlId="formBasicEmail">
-       <Form.Label>Email address</Form.Label>
-       <Form.Control type="email" placeholder="Enter email"/>
-       <Form.Text className="text-muted">We'll never share your email with anyone else.</Form.Text>
-     </Form.Group>
+     <Form.Group className="formUsuario" controlId="formUsuario">
+       <Form.Label className="formLabel1"><FormattedMessage id='Nombre de usuario'/></Form.Label>
+       <div><Form.Control 
+       className="inp"
+       value={formValues.username} 
+                  onChange={handleUserChange}
+                  type="username" 
+                  /></div>
+        </Form.Group>
 
-     <Form.Group className="mb-3" controlId="formBasicPassword">
-       <Form.Label>Password</Form.Label>
-       <Form.Control type="password" placeholder="Password" />
-       <Form.Text className="text-muted">Your password should be have numbers and letters and should be at least 9 char long</Form.Text>
-     </Form.Group>
-     <Button variant="primary" onClick={handleClickIngresar}>
-       ingresar 
+        <Form.Group className="formContrasena" controlId="formConstrasena">
+       <Form.Label className="formLabel"><FormattedMessage id='Contraseña'/></Form.Label>
+       <div>
+       <Form.Control 
+       className="inp"
+       value={formValues.password} 
+       type="password"
+       onChange={handlePasswordChange}
+       
+        />
+        </div>
+        </Form.Group>
+        <div className="formButtons">
+        <Button className="botonIngresar" variant="primary" onClick={handleClickIngresar}>
+        <FormattedMessage id='Ingresar'/> 
      </Button>
-     <Button variant="primary">
-       cancelar
+     <Button className="botonCancelar"variant="primary">
+     <FormattedMessage id='Cancelar'/>
      </Button>
+        </div>
+     
    </Form>
+   {error()}
    </div>
+   
   );
 }
 export default Formulario;

@@ -2,12 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
+import { IntlProvider } from 'react-intl';
 import reportWebVitals from './reportWebVitals';
+import { FormattedMessage } from 'react-intl';
+
+const checkLanguageNavigator = () => {
+  console.log(navigator.language);
+  return navigator.language.startsWith("en");
+}
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
+    {/* <IntlProvider locale={(checkLanguageNavigator())? "en": "es"} messages= {(checkLanguageNavigator())? './locales/en.json': './locales/es.json'}> */}
+    <IntlProvider locale="en" messages="./locales/en.json">
     <App />
+    <div className="contacto">
+        <p><FormattedMessage id='Contáctanos'/> 3102105253 - info@tusegundazo.com - @tusegundazo</p>
+    </div>
+    </IntlProvider>
   </React.StrictMode>
 );
 
