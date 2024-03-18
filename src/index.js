@@ -14,8 +14,8 @@ const checkLanguageNavigator = () => {
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    {/* <IntlProvider locale={(checkLanguageNavigator())? "en": "es"} messages= {(checkLanguageNavigator())? './locales/en.json': './locales/es.json'}> */}
-    <IntlProvider locale="en" messages="./locales/en.json">
+    <IntlProvider locale={(checkLanguageNavigator())? "en": "es"} messages= {(checkLanguageNavigator())? './locales/en.json': './locales/es.json'}>
+    
     <App />
     <div className="contacto">
         <p><FormattedMessage id='Contáctanos'/> 3102105253 - info@tusegundazo.com - @tusegundazo</p>
